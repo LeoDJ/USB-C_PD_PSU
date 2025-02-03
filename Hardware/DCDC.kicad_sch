@@ -6342,7 +6342,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
-		(on_board yes)
+		(on_board no)
 		(dnp yes)
 		(uuid "241f4172-cb57-4e70-8b24-6709bbb24046")
 		(property "Reference" "C28"
@@ -10284,7 +10284,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
-		(on_board yes)
+		(on_board no)
 		(dnp yes)
 		(uuid "f55aa97a-cfd2-4a7c-b5bd-59844b31829a")
 		(property "Reference" "C27"

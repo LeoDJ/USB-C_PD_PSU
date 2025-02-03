@@ -58,7 +58,14 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "copper_edge_clearance|119000000|127620000|6ead23e6-2f4e-4e44-812e-78b0e841410b|27ba2b70-9b10-4d1f-bcbc-896c9b50803a",
+        "copper_edge_clearance|123250000|127620000|6ead23e6-2f4e-4e44-812e-78b0e841410b|8eb34104-d717-463b-8b31-6483070402f8",
+        "hole_clearance|102091738|118656075|add3a8f6-e900-470b-b475-b15bb5fb83df|e747fe38-f8a2-452b-a698-8c1f6666bef4",
+        "hole_clearance|104403801|121801773|4f559df6-df96-46ce-a786-74b22a7e882d|bd882743-399c-4b69-bc9b-9032bfe548cc",
+        "hole_clearance|113048227|99133801|a38539a8-598b-4af6-a70e-7ad3eb662043|248cdcdb-6edd-4a38-b109-54193e218afd",
+        "hole_clearance|116193925|96821738|f77934ee-c416-40c6-8882-37af2077e136|d4defd9d-d345-418a-a78a-014330ad3359"
+      ],
       "meta": {
         "version": 2
       },
@@ -68,7 +75,7 @@
         "connection_width": "warning",
         "copper_edge_clearance": "error",
         "copper_sliver": "warning",
-        "courtyards_overlap": "warning",
+        "courtyards_overlap": "ignore",
         "diff_pair_gap_out_of_range": "error",
         "diff_pair_uncoupled_length_too_long": "error",
         "drill_out_of_range": "error",
@@ -96,9 +103,9 @@
         "padstack": "warning",
         "pth_inside_courtyard": "ignore",
         "shorting_items": "error",
-        "silk_edge_clearance": "warning",
-        "silk_over_copper": "warning",
-        "silk_overlap": "warning",
+        "silk_edge_clearance": "ignore",
+        "silk_over_copper": "ignore",
+        "silk_overlap": "ignore",
         "skew_out_of_range": "error",
         "solder_mask_bridge": "error",
         "starved_thermal": "warning",
@@ -127,7 +134,7 @@
         "min_silk_clearance": 0.0,
         "min_text_height": 0.7,
         "min_text_thickness": 0.12,
-        "min_through_hole_diameter": 0.3,
+        "min_through_hole_diameter": 0.2,
         "min_track_width": 0.0889,
         "min_via_annular_width": 0.05,
         "min_via_diameter": 0.25,

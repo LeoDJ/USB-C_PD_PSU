@@ -8529,28 +8529,6 @@
 			)
 		)
 	)
-	(global_label "UI_VIN"
-		(shape input)
-		(at 252.73 152.4 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b939adca-1773-48a5-a0f3-9f439c458f03")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 243.818 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "BUZZER"
 		(shape input)
 		(at 123.19 72.39 0)
@@ -10522,72 +10500,6 @@
 			(project "USB-C PSU"
 				(path "/2795a064-4b14-4857-8c9a-fd2d32a5a222/83a45ffb-89fc-4bf0-b371-2eda7791aa05"
 					(reference "#PWR0104")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3V3")
-		(at 252.73 149.86 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "26f529d8-3be6-4340-ac5b-3b39f56a5a3e")
-		(property "Reference" "#PWR0118"
-			(at 252.73 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 252.73 144.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 252.73 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 252.73 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 252.73 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "81f8fa83-d3f1-4546-8e44-c312600dcaf1")
-		)
-		(instances
-			(project "USB-C PSU"
-				(path "/2795a064-4b14-4857-8c9a-fd2d32a5a222/83a45ffb-89fc-4bf0-b371-2eda7791aa05"
-					(reference "#PWR0118")
 					(unit 1)
 				)
 			)
@@ -12752,8 +12664,8 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
-		(on_board yes)
-		(dnp no)
+		(on_board no)
+		(dnp yes)
 		(uuid "64494f1d-58dc-4e73-8443-8d3de0032ebc")
 		(property "Reference" "TP101"
 			(at 257.556 149.86 90)
@@ -14650,8 +14562,8 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
-		(on_board yes)
-		(dnp no)
+		(on_board no)
+		(dnp yes)
 		(uuid "adbb9d9c-8c7a-468f-9e73-911599e2802e")
 		(property "Reference" "TP102"
 			(at 257.556 152.4 90)
