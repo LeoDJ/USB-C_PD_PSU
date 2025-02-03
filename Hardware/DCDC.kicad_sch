@@ -2608,7 +2608,7 @@
 		(uuid "fc32c3e1-11c2-4a31-bb21-6ba66c2e77f4")
 	)
 	(junction
-		(at 110.49 107.95)
+		(at 109.22 107.95)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ff78db6e-bde8-4a0b-9515-472a5d179cbf")
@@ -3065,7 +3065,7 @@
 	)
 	(wire
 		(pts
-			(xy 53.34 107.95) (xy 110.49 107.95)
+			(xy 53.34 107.95) (xy 109.22 107.95)
 		)
 		(stroke
 			(width 0)
@@ -3085,7 +3085,7 @@
 	)
 	(wire
 		(pts
-			(xy 110.49 106.68) (xy 110.49 107.95)
+			(xy 109.22 106.68) (xy 109.22 107.95)
 		)
 		(stroke
 			(width 0)
@@ -3655,7 +3655,7 @@
 	)
 	(wire
 		(pts
-			(xy 110.49 107.95) (xy 110.49 109.22)
+			(xy 109.22 107.95) (xy 109.22 109.22)
 		)
 		(stroke
 			(width 0)
@@ -3702,6 +3702,16 @@
 			(type default)
 		)
 		(uuid "982715c3-11cc-4900-a9bb-d4be7b8c89be")
+	)
+	(wire
+		(pts
+			(xy 109.22 109.22) (xy 110.49 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "98bb38c7-5b7e-41ba-a13d-0120d29c7928")
 	)
 	(wire
 		(pts
@@ -3802,6 +3812,16 @@
 			(type default)
 		)
 		(uuid "a78f1dd8-f5d3-40b2-ae01-9e18c00937ca")
+	)
+	(wire
+		(pts
+			(xy 109.22 106.68) (xy 110.49 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8623b7a-c781-44cf-835a-dd64a4079505")
 	)
 	(wire
 		(pts
@@ -4458,7 +4478,6 @@
 	)
 	(label "HIDRV1"
 		(at 125.73 91.44 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4469,7 +4488,6 @@
 	)
 	(label "LODRV2"
 		(at 153.67 91.44 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4480,7 +4498,6 @@
 	)
 	(label "ACP"
 		(at 105.41 101.6 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4491,7 +4508,6 @@
 	)
 	(label "VSYS"
 		(at 125.73 29.21 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4502,7 +4518,6 @@
 	)
 	(label "IIN"
 		(at 179.07 124.46 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4513,7 +4528,6 @@
 	)
 	(label "SW1"
 		(at 130.81 91.44 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4524,7 +4538,6 @@
 	)
 	(label "POUT"
 		(at 156.21 29.21 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4535,7 +4548,6 @@
 	)
 	(label "MODE"
 		(at 179.07 129.54 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4546,7 +4558,6 @@
 	)
 	(label "HIDRV2"
 		(at 161.29 91.44 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4557,7 +4568,6 @@
 	)
 	(label "SW2"
 		(at 156.21 91.44 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4568,7 +4578,6 @@
 	)
 	(label "SRP"
 		(at 179.07 99.06 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4579,7 +4588,6 @@
 	)
 	(label "ACN"
 		(at 105.41 99.06 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4590,7 +4598,6 @@
 	)
 	(label "BTST1"
 		(at 128.27 91.44 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4601,7 +4608,6 @@
 	)
 	(label "LODRV1"
 		(at 133.35 91.44 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4612,7 +4618,6 @@
 	)
 	(label "IOUT"
 		(at 179.07 127 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4623,7 +4628,6 @@
 	)
 	(label "BTST2"
 		(at 158.75 91.44 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4634,7 +4638,6 @@
 	)
 	(label "SRN"
 		(at 179.07 101.6 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4910,7 +4913,6 @@
 	(hierarchical_label "CE"
 		(shape input)
 		(at 107.95 137.16 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4922,7 +4924,6 @@
 	(hierarchical_label "SDA"
 		(shape input)
 		(at 107.95 144.78 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4934,7 +4935,6 @@
 	(hierarchical_label "VOUT"
 		(shape input)
 		(at 257.81 27.94 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4946,7 +4946,6 @@
 	(hierarchical_label "INT"
 		(shape input)
 		(at 107.95 139.7 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4958,7 +4957,6 @@
 	(hierarchical_label "VIN"
 		(shape input)
 		(at 38.1 27.94 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4970,7 +4968,6 @@
 	(hierarchical_label "FSW_SYNC"
 		(shape input)
 		(at 187.96 133.35 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4982,7 +4979,6 @@
 	(hierarchical_label "SCL"
 		(shape input)
 		(at 107.95 142.24 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6434,7 +6430,7 @@
 				)
 			)
 		)
-		(property "Value" "1u 25V"
+		(property "Value" "4u7u 25V"
 			(at 88.646 127.254 90)
 			(effects
 				(font
@@ -9383,6 +9379,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
