@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.12,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.127
+          "min_clearance": 0.1
         }
       },
       "diff_pair_dimensions": [
@@ -180,7 +180,7 @@
       "track_widths": [
         0.0,
         0.0889,
-        0.1016,
+        0.1,
         0.127,
         0.2,
         0.254,
@@ -562,15 +562,15 @@
     "netclass_patterns": [
       {
         "netclass": "GateDrive",
-        "pattern": "/LODRV*"
+        "pattern": "*/LODRV*"
       },
       {
         "netclass": "GateDrive",
-        "pattern": "/SW*"
+        "pattern": "*/SW*"
       },
       {
         "netclass": "GateDrive",
-        "pattern": "/HIDRV*"
+        "pattern": "*/HIDRV*"
       }
     ]
   },
