@@ -5392,8 +5392,8 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(on_board no)
+		(dnp yes)
 		(uuid "019d66a9-71d4-40e9-9d19-3da953a7878f")
 		(property "Reference" "TP10"
 			(at 105.664 116.84 90)
@@ -9360,8 +9360,8 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(on_board no)
+		(dnp yes)
 		(uuid "c53d89c5-efdf-4d04-a5e6-ac3e17ebb112")
 		(property "Reference" "TP13"
 			(at 185.42 136.906 90)
@@ -10124,8 +10124,8 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(on_board no)
+		(dnp yes)
 		(uuid "ee7be54d-2f02-4270-8b16-887433d54c67")
 		(property "Reference" "TP9"
 			(at 105.664 114.3 90)
