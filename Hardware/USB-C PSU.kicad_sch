@@ -13186,7 +13186,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" "C2881892"
+		(property "LCSC" ""
 			(at 224.79 31.75 0)
 			(effects
 				(font
