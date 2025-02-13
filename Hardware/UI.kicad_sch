@@ -7390,26 +7390,16 @@
 		)
 		(uuid "64cae8da-4425-4131-bf5f-55831a9b5037")
 	)
-	(text_box "TODO:\nGPIOs for Phylion"
+	(text "Interface for Phylion BMS\nwill be done externally"
 		(exclude_from_sim no)
-		(at 196.85 129.54 0)
-		(size 16.51 7.62)
-		(stroke
-			(width 0)
-			(type default)
-			(color 255 0 255 1)
-		)
-		(fill
-			(type none)
-		)
+		(at 187.452 136.398 0)
 		(effects
 			(font
-				(size 1.27 1.27)
-				(color 255 0 255 1)
+				(size 1.016 1.016)
 			)
-			(justify left top)
+			(justify left)
 		)
-		(uuid "b02be5d1-f027-4db0-bbda-0f867a761a66")
+		(uuid "0d9a9c5e-522b-4252-9feb-3981daafeb06")
 	)
 	(text "Has to be enabled \nin software first"
 		(exclude_from_sim no)
@@ -7442,6 +7432,17 @@
 			(justify left top)
 		)
 		(uuid "91fd6521-11ce-44f0-83ab-4353e60d9d74")
+	)
+	(text "For more cost savings,\nthis can be replaced\nwith discrete diodes"
+		(exclude_from_sim no)
+		(at 16.256 101.092 0)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left)
+		)
+		(uuid "e758e217-f1ca-4d41-9bd2-3f18b76f34c4")
 	)
 	(label "UI_D-"
 		(at 66.04 41.91 0)
@@ -9089,6 +9090,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC Part" ""
+			(at 21.59 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bea5e4d7-54b7-41b8-a78a-2af54b18adb4")
 		)
@@ -10139,7 +10149,7 @@
 		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "1f2aedbd-2093-4e1f-8796-0d79caec50d4")
 		(property "Reference" "H101"
@@ -12445,6 +12455,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC Part" "C52923"
+			(at 58.42 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a78183b5-bdcd-4b0f-bd63-98eb207faf7b")
 		)
@@ -12790,6 +12809,15 @@
 			)
 		)
 		(property "LCSC" ""
+			(at 148.59 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" ""
 			(at 148.59 161.29 0)
 			(effects
 				(font
@@ -13983,7 +14011,7 @@
 		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "92fb14c5-0742-41bf-a70f-8116521c45a3")
 		(property "Reference" "H102"
@@ -15388,6 +15416,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC Part" ""
+			(at 143.51 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "11b6c979-1cdf-4f5c-a364-9d76d0ed57f9")
 		)
@@ -16010,6 +16047,15 @@
 			)
 		)
 		(property "LCSC" ""
+			(at 35.56 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C52923"
 			(at 35.56 129.54 0)
 			(effects
 				(font

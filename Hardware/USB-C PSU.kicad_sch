@@ -8587,7 +8587,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC Part" " C431092"
+		(property "LCSC Part" "C431092"
 			(at 137.16 101.6 0)
 			(effects
 				(font
@@ -9186,6 +9186,15 @@
 			)
 		)
 		(property "LCSC" ""
+			(at 85.09 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" ""
 			(at 85.09 90.17 0)
 			(effects
 				(font
@@ -13631,6 +13640,15 @@
 			)
 		)
 		(property "LCSC" ""
+			(at 271.78 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC Part" "C86295"
 			(at 271.78 146.05 0)
 			(effects
 				(font
