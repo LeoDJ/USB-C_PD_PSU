@@ -1,0 +1,58 @@
+#include <dt-bindings/usb-c/pd.h>
+
+/ {
+
+    chosen {
+        zephyr,console = &usart1;
+    };
+/*
+    pwmleds {
+		compatible = "pwm-leds";
+		pwm_ctl: g0 {
+			pwms = <&pwm2 0 PWM_USEC(50) PWM_POLARITY_INVERTED>;
+			label = "PWM CTL";
+		};
+	};*/
+	aliases {
+		usbc-port0 = &port1;
+	};
+
+    pwrctrl {
+		compatible = "gpio-leds";
+
+		/* Pin D3 is used to enable VBUS Source */
+		source_en: g1 {
+			gpios = <&gpioa 7 GPIO_ACTIVE_HIGH>;
+			label = "SOURCE_EN";
+		};
+
+		/* Pin A1 is used for DCDC_EN */
+		dcdc_en: g2 {
+			gpios = <&gpiob 3 GPIO_ACTIVE_HIGH>;
+			label = "V_CTL2";
+		};
+
+		/* Pin D4 enables VCONN on CC1 */
+		vconn1_en: vconn1_en {
+			gpios = <&gpiob 8 GPIO_ACTIVE_LOW>;
+			label = "VCONN1_EN";
+		};
+
+		/* Pin B9 enables VCONN on CC2 */
+		vconn2_en: vconn2_en {
+			gpios = <&gpioc 3 GPIO_ACTIVE_LOW>;
+			label = "VCONN2_EN";
+		};
+	};
+};
+
+&port1 {
+	power-role = "source";
+	data-role = "dual"; /* actually means disconnected */
+	typec-power-opmode = "1.5A";
+	source-pdos = <PDO_FIXED(5000, 100, 0) 
+		PDO_FIXED(9000, 100, 0) 
+		PDO_FIXED(20000, 5000, 0) 
+		PDO_FIXED(48000, 100, 0) 
+		PDO_PPS_APDO(3300, 48000, 5000)>;
+};

@@ -1,0 +1,6 @@
+[submodule "Firmware/DCDC-Controller/packages/zephyrboards"]
+	path = Firmware/DCDC-Controller/packages/zephyrboards
+	url = https://github.com/dragonlock2/zephyrboards
+[submodule "Firmware/DCDC-Controller/packages/ch32x035"]
+	path = Firmware/DCDC-Controller/packages/ch32x035
+	url = https://github.com/openwch/ch32x035
