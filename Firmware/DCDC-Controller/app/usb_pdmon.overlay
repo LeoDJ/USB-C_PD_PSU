@@ -13,6 +13,15 @@
 			label = "PWM CTL";
 		};
 	};*/
+
+	
+    leds {
+        compatible = "gpio-leds";
+        led_r:   led_r   { gpios = <&gpioa 0 GPIO_ACTIVE_LOW>;  };
+        led_g:   led_g   { gpios = <&gpioa 1 GPIO_ACTIVE_LOW>;  };
+        led_b:   led_b   { gpios = <&gpioa 2 GPIO_ACTIVE_LOW>;  };
+	};
+
 	aliases {
 		usbc-port0 = &port1;
 	};
@@ -22,28 +31,47 @@
 
 		/* Pin D3 is used to enable VBUS Source */
 		source_en: g1 {
-			gpios = <&gpioa 7 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpioa 6 GPIO_ACTIVE_HIGH>;
 			label = "SOURCE_EN";
 		};
 
 		/* Pin A1 is used for DCDC_EN */
-		dcdc_en: g2 {
-			gpios = <&gpiob 3 GPIO_ACTIVE_HIGH>;
+		dcdc_en: dcdc_en {
+			gpios = <&gpiob 0 GPIO_ACTIVE_LOW>;
 			label = "V_CTL2";
 		};
 
 		/* Pin D4 enables VCONN on CC1 */
 		vconn1_en: vconn1_en {
-			gpios = <&gpiob 8 GPIO_ACTIVE_LOW>;
+			gpios = <&gpiob 6 GPIO_ACTIVE_LOW>;
 			label = "VCONN1_EN";
 		};
 
 		/* Pin B9 enables VCONN on CC2 */
 		vconn2_en: vconn2_en {
-			gpios = <&gpioc 3 GPIO_ACTIVE_LOW>;
+			gpios = <&gpiob 7 GPIO_ACTIVE_LOW>;
 			label = "VCONN2_EN";
 		};
 	};
+
+	gpio_i2c0: gpio_i2c {                                                                                         
+		compatible = "gpio-i2c";
+		status = "okay";
+		clock-frequency = <400000>;
+		sda-gpios = <&gpiob 4 (GPIO_OPEN_DRAIN)>;
+		scl-gpios = <&gpiob 3 (GPIO_OPEN_DRAIN)>;
+		label = "GPIO_I2C_0";
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		bq2575x: charger@6B {
+			compatible = "ti,bq2575x";
+			reg = <0x6B>;
+			status = "okay";
+		};
+	};
+
+
 };
 
 &port1 {

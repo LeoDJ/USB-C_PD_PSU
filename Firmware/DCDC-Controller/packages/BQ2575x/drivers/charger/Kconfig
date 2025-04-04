@@ -1,0 +1,5 @@
+config CHARGER_BQ2575x
+    bool "Enable TI BQ2575x charger support"
+    depends on I2C
+    help
+      Enable support for the TI BQ2575x battery charger.
