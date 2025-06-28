@@ -1,10 +1,11 @@
-# Copyright (c) 2017 Linaro Ltd.
-# SPDX-License-Identifier: Apache-2.0
+menuconfig I2C_GPIO_EMULATED_OD
+    bool "Custom I2C bitbang (GPIO) driver"
+    depends on I2C
+	  select I2C_BITBANG
+    help
+      Replace the default GPIO I2C driver with a custom version.
 
-config I2C_GPIO
-	bool "GPIO bit banging I2C support"
-	default y
-	depends on DT_HAS_GPIO_I2C_ENABLED
-	select I2C_BITBANG
-	help
-	  Enable software driven (bit banging) I2C support using GPIO pins
+# if I2C_GPIO_EMULATED_OD
+# config I2C
+#     default y
+# endif

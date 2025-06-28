@@ -1,5 +1,5 @@
 build:
-  cmake: ./drivers/charger
-  kconfig: ./drivers/charger/Kconfig
+  cmake: ./drivers
+  kconfig: ./drivers/Kconfig
   settings:
     dts_root: .

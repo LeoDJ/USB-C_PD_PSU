@@ -1,9 +1,9 @@
 # Copyright (c) 2020 Vestas Wind Systems A/S
 # SPDX-License-Identifier: Apache-2.0
 
-description: GPIO bitbanging I2C support
+description: GPIO bitbanging I2C support, with emulated open drain behaviour
 
-compatible: "gpio-i2c"
+compatible: "gpio-i2c-emod"
 
 include: i2c-controller.yaml
 

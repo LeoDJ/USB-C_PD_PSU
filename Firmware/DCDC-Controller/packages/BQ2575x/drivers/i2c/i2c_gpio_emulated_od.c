@@ -5,7 +5,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#define DT_DRV_COMPAT gpio_i2c
+#define DT_DRV_COMPAT gpio_i2c_emod
 
 /**
  * @file
@@ -15,8 +15,8 @@
  * software control.
  *
  * The GPIO pins used must be configured (through devicetree and pinmux) with
- * suitable flags, i.e. the SDA pin as open-collector/open-drain with a pull-up
- * resistor (possibly as an external component attached to the pin).
+ * suitable flags, i.e. the SDA pin as input with a pull-up resistor (possibly 
+ * as an external component attached to the pin).
  *
  * When the SDA pin is read it must return the state of the physical hardware
  * line, not just the last state written to it for output.
@@ -34,8 +34,8 @@
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(i2c_gpio);
 
-#include "i2c-priv.h"
-#include "i2c_bitbang.h"
+#include <../drivers/i2c/i2c-priv.h>
+#include <../drivers/i2c/i2c_bitbang.h>
 
 /* Driver config */
 struct i2c_gpio_config {
@@ -54,14 +54,14 @@ static void i2c_gpio_set_scl(void *io_context, int state)
 {
 	const struct i2c_gpio_config *config = io_context;
 
-	gpio_pin_set_dt(&config->scl_gpio, state);
+	gpio_pin_configure_dt(&config->scl_gpio, (state == 0) ? GPIO_OUTPUT : GPIO_INPUT);
 }
 
 static void i2c_gpio_set_sda(void *io_context, int state)
 {
 	const struct i2c_gpio_config *config = io_context;
-
-	gpio_pin_set_dt(&config->sda_gpio, state);
+	
+	gpio_pin_configure_dt(&config->sda_gpio, (state == 0) ? GPIO_OUTPUT : GPIO_INPUT);
 }
 
 static int i2c_gpio_get_sda(void *io_context)
@@ -159,7 +159,7 @@ static int i2c_gpio_init(const struct device *dev)
 		return -ENODEV;
 	}
 
-	err = gpio_pin_configure_dt(&config->scl_gpio, GPIO_OUTPUT_HIGH);
+	err = gpio_pin_configure_dt(&config->scl_gpio, GPIO_INPUT);
 	if (err) {
 		LOG_ERR("failed to configure SCL GPIO pin (err %d)", err);
 		return err;
@@ -174,12 +174,16 @@ static int i2c_gpio_init(const struct device *dev)
 				    GPIO_INPUT | GPIO_OUTPUT_HIGH);
 	if (err == -ENOTSUP) {
 		err = gpio_pin_configure_dt(&config->sda_gpio,
-					    GPIO_OUTPUT_HIGH);
+					    GPIO_INPUT);
 	}
 	if (err) {
 		LOG_ERR("failed to configure SDA GPIO pin (err %d)", err);
 		return err;
 	}
+
+	// set both inputs to low, so when configured to output, they output low
+	gpio_pin_set_dt(&config->scl_gpio, 0);
+	gpio_pin_set_dt(&config->sda_gpio, 0);
 
 	i2c_bitbang_init(&context->bitbang, &io_fns, (void *)config);
 

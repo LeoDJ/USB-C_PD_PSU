@@ -24,6 +24,7 @@
 
 	aliases {
 		usbc-port0 = &port1;
+		my-i2c = &gpio_i2c0;
 	};
 
     pwrctrl {
@@ -54,12 +55,12 @@
 		};
 	};
 
-	gpio_i2c0: gpio_i2c {                                                                                         
-		compatible = "gpio-i2c";
+	gpio_i2c0: gpio_i2c0 {                                                                                         
+		compatible = "gpio-i2c-emod";
 		status = "okay";
-		clock-frequency = <400000>;
-		sda-gpios = <&gpiob 4 (GPIO_OPEN_DRAIN)>;
-		scl-gpios = <&gpiob 3 (GPIO_OPEN_DRAIN)>;
+		clock-frequency = <100000>;
+		sda-gpios = <&gpiob 4 GPIO_ACTIVE_HIGH>;
+		scl-gpios = <&gpiob 3 GPIO_ACTIVE_HIGH>;
 		label = "GPIO_I2C_0";
 		#address-cells = <1>;
 		#size-cells = <0>;
