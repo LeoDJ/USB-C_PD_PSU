@@ -15,20 +15,39 @@ struct bq2575x_config {
     BQ2575x bq2575x;
 };
 
-static int bq25180_get_prop(const struct device* dev, charger_prop_t prop, union charger_propval* val) {
+static int bq2575x_get_prop(const struct device* dev, charger_prop_t prop, union charger_propval* val) {
+    // TODO: actually do soemthing now that it compiles
+
+    BQ2575x *bq = &((bq2575x_config*)dev->config)->bq2575x;
+
+    switch(prop) {
+        case CHARGER_PROP_INPUT_REGULATION_VOLTAGE_UV:  val->input_voltage_regulation_voltage_uv =  bq->getValue<BQ2575x::VAC_DPM>();    break;
+        case CHARGER_PROP_INPUT_REGULATION_CURRENT_UA:  val->input_current_regulation_current_ua =  bq->getValue<BQ2575x::IAC_DPM>();    break;
+        case CHARGER_PROP_CONSTANT_CHARGE_VOLTAGE_UV:   val->const_charge_voltage_uv =              bq->getValue<BQ2575x::VOUT_REG>();   break;
+        case CHARGER_PROP_CONSTANT_CHARGE_CURRENT_UA:   val->const_charge_current_ua =              bq->getValue<BQ2575x::IOUT_REG>();   break;
+        default: return -ENOTSUP;
+    }
+
+    return 0;
+}
+
+static int bq2575x_set_prop(const struct device* dev, charger_prop_t prop, const union charger_propval* val) {
 
     return -ENOTSUP;
 }
 
-static int bq25180_set_prop(const struct device* dev, charger_prop_t prop, const union charger_propval* val) {
+static int bq2575x_charge_enable(const struct device *dev, const bool enable) {
+    BQ2575x *bq = &((bq2575x_config*)dev->config)->bq2575x;
 
-    return -ENOTSUP;
+    bq->setValue<BQ2575x::EN_CHG>(enable);
+
+    return 0;
 }
 
-static const struct charger_driver_api bq2515x_api = {
-	.get_property = bq25180_get_prop,    
-	.set_property = bq25180_set_prop,
-	.charge_enable = nullptr,           // TODO
+static const struct charger_driver_api bq2575x_api = {
+	.get_property = bq2575x_get_prop,    
+	.set_property = bq2575x_set_prop,
+	.charge_enable = bq2575x_charge_enable,
 };
 
 static int bq2515x_init(const struct device *dev) {
@@ -52,12 +71,12 @@ static int bq2515x_init(const struct device *dev) {
         return i2c_write_dt(&bq_i2c_##inst, tx_buf, numBytes + 1);                                            \
     }                                                                                                         \
                                                                                                               \
-    static const struct bq2575x_config bq25180_config_##inst = {                                              \
+    static const struct bq2575x_config bq2575x_config_##inst = {                                              \
         .i2c = bq_i2c_##inst,                                                                                 \
         .bq2575x = BQ2575x(bq_i2c_read_##inst, bq_i2c_write_##inst),                                          \
     };                                                                                                        \
                                                                                                               \
-    DEVICE_DT_INST_DEFINE(inst, bq2515x_init, NULL, NULL, &bq25180_config_##inst, POST_KERNEL,                \
-                          CONFIG_CHARGER_INIT_PRIORITY, &bq2515x_api);
+    DEVICE_DT_INST_DEFINE(inst, bq2515x_init, NULL, NULL, &bq2575x_config_##inst, POST_KERNEL,                \
+                          CONFIG_CHARGER_INIT_PRIORITY, &bq2575x_api);
 
 DT_INST_FOREACH_STATUS_OKAY(CHARGER_BQ2515x_INIT)

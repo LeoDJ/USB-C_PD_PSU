@@ -1,0 +1,28 @@
+description: |
+  BQ2575X
+
+  The device has a single child node for the charger. For example:
+
+  bq2575x@6b {
+    compatible = "ti,bq2575x";
+    reg = <0x6b>;
+
+    constant-charge-current-max-microamp = <500000>;
+  };
+
+compatible: "ti,bq2575x"
+
+include: [battery.yaml, i2c-device.yaml]
+
+
+properties:
+  reg:
+    required: true
+#   constant-charge-current-max-microamp:
+#     type: int
+#     default: 0
+#     description: |
+#       Charge current set at init time in uA, available range is 5 mA to 800 mA.
+#       The value specified will be rounded down to the closest implemented
+#       value. If set to 0 (default) skip setting the charge current value at
+#       driver initialization.
