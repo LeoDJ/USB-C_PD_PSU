@@ -1,13 +1,9 @@
-/*
- * Copyright (c) 2016 Intel Corporation
- *
- * SPDX-License-Identifier: Apache-2.0
- */
-
 #include <stdio.h>
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/charger.h>
+
+#include "util.h"
 
 /* 1000 msec = 1 sec */
 #define SLEEP_TIME_MS   1000
@@ -26,6 +22,7 @@ static const struct gpio_dt_spec dcdc_en_ = GPIO_DT_SPEC_GET(DT_NODELABEL(dcdc_e
 const struct device *dcdc = DEVICE_DT_GET(DT_NODELABEL(bq2575x));
 
 void i2c_scan(void);
+void i2c_dump(uint16_t addr, uint8_t regStart, uint8_t regStop);
 
 int main(void)
 {
@@ -59,7 +56,9 @@ int main(void)
 		printf("LED state: %s\n", led_state ? "ON" : "OFF");
 		k_msleep(SLEEP_TIME_MS);
 
-		i2c_scan();
+		// i2c_scan();
+		i2c_dump(0x6B, 0, 0xFF);
+
 	}
 	return 0;
 }
@@ -147,4 +146,22 @@ void i2c_scan(void)
 	printf("|\n");
 	printf("\nI2C device(s) found on the bus: %d\nScanning done.\n\n", i2c_dev_cnt);
 	printf("Find the registered I2C address on: https://i2cdevices.org/addresses\n\n");
+}
+
+
+void i2c_dump(uint16_t addr, uint8_t regStart, uint8_t regStop) {
+	uint8_t buf[regStop - regStart + 1] = {0};
+	const struct device *i2c_dev;
+	i2c_dev = DEVICE_DT_GET(DT_NODELABEL(gpio_i2c0));
+
+	uint8_t dst;
+	struct i2c_msg msg = {
+		.buf = &dst,
+		.len = 1,
+		.flags = I2C_MSG_READ | I2C_MSG_STOP,
+	};
+
+	i2c_write_read(i2c_dev, addr, &regStart, 1, buf, sizeof(buf));
+
+	printHex(buf, sizeof(buf));
 }
