@@ -30,27 +30,18 @@
     pwrctrl {
 		compatible = "gpio-leds";
 
-		/* Pin D3 is used to enable VBUS Source */
-		source_en: g1 {
-			gpios = <&gpioa 6 GPIO_ACTIVE_HIGH>;
-			label = "SOURCE_EN";
-		};
-
-		/* Pin A1 is used for DCDC_EN */
 		dcdc_en: dcdc_en {
 			gpios = <&gpiob 0 GPIO_ACTIVE_LOW>;
 			label = "V_CTL2";
 		};
 
-		/* Pin D4 enables VCONN on CC1 */
 		vconn1_en: vconn1_en {
-			gpios = <&gpiob 6 GPIO_ACTIVE_LOW>;
+			gpios = <&gpiob 6 GPIO_ACTIVE_HIGH>;
 			label = "VCONN1_EN";
 		};
 
-		/* Pin B9 enables VCONN on CC2 */
 		vconn2_en: vconn2_en {
-			gpios = <&gpiob 7 GPIO_ACTIVE_LOW>;
+			gpios = <&gpiob 7 GPIO_ACTIVE_HIGH>;
 			label = "VCONN2_EN";
 		};
 	};
@@ -58,7 +49,7 @@
 	gpio_i2c0: gpio_i2c0 {                                                                                         
 		compatible = "gpio-i2c-emod";
 		status = "okay";
-		clock-frequency = <100000>;
+		clock-frequency = <400000>;
 		sda-gpios = <&gpiob 4 GPIO_ACTIVE_HIGH>;
 		scl-gpios = <&gpiob 3 GPIO_ACTIVE_HIGH>;
 		label = "GPIO_I2C_0";

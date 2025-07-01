@@ -4,20 +4,13 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/drivers/charger.h>
 
-#include "../../src/BQ2575x.h"
+#include "bq2575x.h"
 
 #define DT_DRV_COMPAT ti_bq2575x
 
 LOG_MODULE_REGISTER(bq2575x, CONFIG_CHARGER_LOG_LEVEL);
 
-struct bq2575x_config {
-    struct i2c_dt_spec i2c;
-    BQ2575x bq2575x;
-};
-
 static int bq2575x_get_prop(const struct device* dev, charger_prop_t prop, union charger_propval* val) {
-    // TODO: actually do soemthing now that it compiles
-
     BQ2575x *bq = &((bq2575x_config*)dev->config)->bq2575x;
 
     switch(prop) {
@@ -25,6 +18,7 @@ static int bq2575x_get_prop(const struct device* dev, charger_prop_t prop, union
         case CHARGER_PROP_INPUT_REGULATION_CURRENT_UA:  val->input_current_regulation_current_ua =  bq->getValue<BQ2575x::IAC_DPM>();    break;
         case CHARGER_PROP_CONSTANT_CHARGE_VOLTAGE_UV:   val->const_charge_voltage_uv =              bq->getValue<BQ2575x::VOUT_REG>();   break;
         case CHARGER_PROP_CONSTANT_CHARGE_CURRENT_UA:   val->const_charge_current_ua =              bq->getValue<BQ2575x::IOUT_REG>();   break;
+        case CHARGER_PROP_BQ_INST:                      val->system_voltage_notification = (uint32_t)bq; /* hacky test stuff */                      break;
         default: return -ENOTSUP;
     }
 
@@ -33,7 +27,17 @@ static int bq2575x_get_prop(const struct device* dev, charger_prop_t prop, union
 
 static int bq2575x_set_prop(const struct device* dev, charger_prop_t prop, const union charger_propval* val) {
 
-    return -ENOTSUP;
+    BQ2575x *bq = &((bq2575x_config*)dev->config)->bq2575x;
+
+    switch(prop) {
+        case CHARGER_PROP_INPUT_REGULATION_VOLTAGE_UV:  bq->setValue<BQ2575x::VAC_DPM>(val->input_voltage_regulation_voltage_uv);   break;
+        case CHARGER_PROP_INPUT_REGULATION_CURRENT_UA:  bq->setValue<BQ2575x::IAC_DPM>(val->input_current_regulation_current_ua);   break;
+        case CHARGER_PROP_CONSTANT_CHARGE_VOLTAGE_UV:   bq->setValue<BQ2575x::VOUT_REG>(val->const_charge_voltage_uv);              break;
+        case CHARGER_PROP_CONSTANT_CHARGE_CURRENT_UA:   bq->setValue<BQ2575x::IOUT_REG>(val->const_charge_current_ua);              break;
+        default: return -ENOTSUP;
+    }
+
+    return 0;
 }
 
 static int bq2575x_charge_enable(const struct device *dev, const bool enable) {

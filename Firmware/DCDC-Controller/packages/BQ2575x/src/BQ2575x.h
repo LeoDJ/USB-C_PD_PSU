@@ -37,7 +37,7 @@ class BQ2575x {
         constexpr regField_t field = regFields[F];
         constexpr bool isShort = (field.startBit > 7 || field.endBit > 7);   // 2 byte register?
         uint16_t registerValue = _i2c_read_reg(field.regAddress, isShort);
-        registerValue &= ~getMask<F>();
+        registerValue &= getMask<F>();
         int32_t value = registerValue >> field.startBit;
         if constexpr (field.factor != 0) {
             value *= field.factor;

@@ -4,9 +4,10 @@
 #include <zephyr/drivers/charger.h>
 
 #include "util.h"
+#include "../../packages/BQ2575x/drivers/charger/bq2575x.h"
 
 /* 1000 msec = 1 sec */
-#define SLEEP_TIME_MS   1000
+#define SLEEP_TIME_MS   500
 
 /* The devicetree node identifier for the "led0" alias. */
 #define LED0_NODE DT_ALIAS(led0)
@@ -24,6 +25,8 @@ const struct device *dcdc = DEVICE_DT_GET(DT_NODELABEL(bq2575x));
 void i2c_scan(void);
 void i2c_dump(uint16_t addr, uint8_t regStart, uint8_t regStop);
 
+BQ2575x *bq;
+
 int main(void)
 {
 	int ret;
@@ -33,8 +36,23 @@ int main(void)
 
 	if (device_is_ready(dcdc)) {
 		charger_propval val;
+		val.const_charge_voltage_uv = 9000e3;
+		charger_set_prop(dcdc, CHARGER_PROP_CONSTANT_CHARGE_VOLTAGE_UV, &val);
+		val.input_current_regulation_current_ua = 5000e3;
+		charger_set_prop(dcdc, CHARGER_PROP_INPUT_REGULATION_CURRENT_UA, &val);
+
 		charger_get_prop(dcdc, CHARGER_PROP_CONSTANT_CHARGE_VOLTAGE_UV, &val);
-		printf("CC mV: %d\n", val.const_charge_voltage_uv);
+		printf("CC uV: %d\n", val.const_charge_voltage_uv);
+		charger_get_prop(dcdc, CHARGER_PROP_CONSTANT_CHARGE_CURRENT_UA, &val);
+		printf("CC uA: %d\n", val.const_charge_current_ua);
+		charger_get_prop(dcdc, CHARGER_PROP_INPUT_REGULATION_CURRENT_UA, &val);
+		printf("IC uA: %d\n", val.input_current_regulation_current_ua);
+
+		// charger_get_prop(dcdc, CHARGER_PROP_BQ_INST, &val);
+		// bq = (BQ2575x*)val.system_voltage_notification;
+		// bq->setValue<BQ2575x::adc
+
+		gpio_pin_set_dt(&dcdc_en_, 1);
 	}
 
 	if (!gpio_is_ready_dt(&led)) {
@@ -52,12 +70,19 @@ int main(void)
 			return 0;
 		}
 
+
 		led_state = !led_state;
-		printf("LED state: %s\n", led_state ? "ON" : "OFF");
+		// printf("LED state: %s\n", led_state ? "ON" : "OFF");
 		k_msleep(SLEEP_TIME_MS);
 
+		// This makes the DCDC not turn on properly? WTF (works until this code block gets executed??)
+		// uint8_t buf[1];
+		// const uint8_t startAddr = 0x21;
+		// i2c_write_read(dcdc, 0x6B, &startAddr, 1, buf, sizeof(buf));
+		// printf("Status: %02X %02X %02X %02X\n", buf[0], buf[1], buf[2], buf[3]);
+
 		// i2c_scan();
-		i2c_dump(0x6B, 0, 0xFF);
+		i2c_dump(0x6B, 0, 0x3F);
 
 	}
 	return 0;
